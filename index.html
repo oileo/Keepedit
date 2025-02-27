@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveLab</title>
+
+    <meta name="title" content="LiveLab">
+    <meta name="description" content="Create and edit simple webpages for free, forever. Fast, easy-to-use platform for building and publishing websites with live preview and seamless hosting.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h1>LiveLab</h1>
+
+        <button onclick="document.getElementById('new-project').style.top='50%';">New project</button>
+        <button>Import project</button>
+        <button>Guide</button>
+        <button>Donate</button>
+        <button>Settings</button>
+    </nav>
+    <main id="projects">
+        <h1 id="title">Your projects</h1>
+    </main>
+
+    <div id="context-menu" class="popup">
+        <h1>What you want to do with this projects?</h1>
+        <button onclick="deleteProject(actualSelection)">Delete project</button>
+        <button onclick="document.getElementById('context-menu').style.top = '150%'">Close</button>
+    </div>
+
+    <div class="popup" id="new-project">
+        <h1>New project</h1>
+        <input type="text" id="pname" placeholder="Project name">
+        <input type="text" id="pdesc" placeholder="Project description">
+        <button id="createProject" onclick="registerProject(document.getElementById('pname').value, document.getElementById('pdesc').value); document.getElementById('new-project').style.top = '150%'">Create project</button>
+        <button onclick="document.getElementById('new-project').style.top = '150%'">Close</button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+</head>
+<body>
+    <nav>
+        <h1>LiveLab</h1>
+
+        <button id="save">Save project</button>
+        <button id="refresh">Refresh project</button>
+        <button>Share project</button>
+        <button>Libraries</button>
+        <button>Donate</button>
+    </nav>
+
+    <main id="main-editor">
+        <div id="editor">
+            <div id="toolbar">
+                <select id="files">
+                    <option>index.html</option>
+                    <option>style.css</option>
+                    <option>script.js</option>
+                </select>
+            </div>
+            <textarea placeholder="</>" id="code-editor" class="code"></textarea> 
+        </div>
+        <iframe id="preview"></iframe>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>

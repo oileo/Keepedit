@@ -61,7 +61,19 @@ const deleteProject = (id)=> {
     localStorage.setItem("projects", JSON.stringify(_projects));
 }
 
-const registerProject = (title, description="Nothing yet.", files, _online=false, load=false)=> {
+const genToken = ()=> {
+    let chars = "abcdefghijklmnopqrstuvwxyz0123456789-_#@";
+    let size = Math.floor(Math.random() * 30)+5;
+    let token = "";
+
+    for(let x = 0; x < size; x++) {
+        token += chars[Math.floor(Math.random()*chars.length)];
+    }
+
+    return token;
+};
+
+const registerProject = async (title, description="Nothing yet.", files, _online=false, load=false)=> {
     if(title.trim() === "") title = nameGenerator();
     if(description.trim() === "") description = "Nothing yet.";
     
@@ -71,19 +83,21 @@ const registerProject = (title, description="Nothing yet.", files, _online=false
     
     pjs++;
 
+    let tk = genToken();
+
     let pj = {
         title : title,
         description : description,
         files: files || {
             "index.html" : basicTemplate.trim(),
             "style.css" : "",
-            "index.js" : ""
+            "index.js" : "",
+            "token": tk
         },
         online: _online,
-        id: pjs-1
+        id: pjs-1,
+        token: tk
     };
-
-    if(!load) _projects.push(pj);
     
     let body = document.createElement("div");
     body.id = "project-" + pj.id;
@@ -93,7 +107,7 @@ const registerProject = (title, description="Nothing yet.", files, _online=false
 
     body.addEventListener("click", (e)=> {
         localStorage.setItem("actual-project", pj.id);
-        window.open("./editor.html");
+        window.open("./workspace");
     });
 
     body.addEventListener("contextmenu", (e)=> {
@@ -114,15 +128,18 @@ const registerProject = (title, description="Nothing yet.", files, _online=false
 
     document.getElementById("projects").appendChild(body);
 
-    localStorage.setItem("projects", JSON.stringify(_projects));
-
     document.getElementById("pname").innerText = "";
     document.getElementById("pdesc").innerText = "";
+
+    if(!load) {
+        _projects.push(pj);
+        localStorage.setItem("projects", JSON.stringify(_projects));
+    }
 }
 
 if(_projects.length > 0) {
-    Object.keys(_projects).forEach((key, index)=> {
+    Object.keys(_projects).forEach(async (key, index)=> {
         let pj = _projects[key];
-        registerProject(pj.title, pj.description, pj.files, pj.online, true);
+        await registerProject(pj.title, pj.description, pj.files, pj.online, true);
     });
 }

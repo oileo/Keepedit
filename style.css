@@ -87,6 +87,7 @@ body #main-editor {
 body #main-editor #editor {
     flex-direction: column;
     display: flex;
+    max-width: 100%!important;
 }
 
 body #main-editor iframe, 
@@ -94,6 +95,7 @@ body #main-editor #editor {
     width: 100%;
     border: 0;
     height: 100%;
+    flex: 1;
 }
 
 body #main-editor #editor textarea {
@@ -184,6 +186,14 @@ body main .project p span {
     gap: 10px;
 }
 
+#editor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Impede crescimento fora do esperado */
+}
+
 #toolbar select {
     background-color: #44475a;
     padding: 5px;
@@ -195,7 +205,7 @@ body main .project p span {
 .CodeMirror {
     width: 100%!important;
     height: 100%!important;
-    background-color: #282a36;
-    color: #f8f8f2;
-    border: 5px solid #191a21!important;
+    max-width: 100%!important;
+    max-height: 100%!important;
+    overflow: auto;
 }

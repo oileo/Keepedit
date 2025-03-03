@@ -1,0 +1,23 @@
+{
+  "name": "keepedit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "run": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oileo/LiveLab.git"
+  },
+  "keywords": [],
+  "author": "GlitchPalm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oileo/LiveLab/issues"
+  },
+  "homepage": "https://github.com/oileo/LiveLab#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

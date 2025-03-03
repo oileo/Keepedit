@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loading...</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
 </head>
@@ -12,9 +12,12 @@
     <nav>
         <h1>Keepedit</h1>
 
+        <h2>Your token</h2>
+        <h3 id="token" style="cursor: pointer; margin: 10px 0px; color: #ff79c6;">[See token]</h3>
+
         <button id="save">Save project</button>
         <button id="refresh">Refresh project</button>
-        <button>Share project</button>
+        <button id="share">Share project</button>
         <button>Libraries</button>
         <button>Donate</button>
     </nav>
@@ -38,6 +41,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
-    <script src="editor.js"></script>
+    <script src="/editor"></script>
 </body>
 </html>

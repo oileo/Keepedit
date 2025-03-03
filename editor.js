@@ -18,7 +18,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
         mode: "htmlmixed",
         theme: "dracula",
-        lineNumbers: true
+        lineNumbers: true,
+        viewportMargin: Infinity
+    });
+
+    document.getElementById("token").addEventListener("click", (e)=> {
+        if(document.getElementById("token").innerText === "[See token]"){
+            document.getElementById("token").innerText = code.token;
+            document.getElementById("token").style.cursor = "text";
+        }
     });
 
     editor.on("change", () => {
@@ -39,6 +47,25 @@ document.addEventListener("DOMContentLoaded", function () {
         _projects[_code] = code;
         localStorage.setItem("projects", JSON.stringify(_projects));
         alert("Saved!!!");
+    });
+
+    document.getElementById("share").addEventListener("click", async (e)=> {
+        let _token = prompt("Project token");
+        if(!_token || _token.trim() === "") {
+            alert("Put a valid token!!!");
+            return;
+        }
+
+        let c = [];
+        c.push(code.files);
+
+        const response = await fetch("./p/" + code.title, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(c),
+        });
     });
 
     document.getElementById("refresh").addEventListener("click", (e)=> {
